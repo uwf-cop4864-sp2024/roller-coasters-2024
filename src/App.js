@@ -8,6 +8,7 @@ import { MySignInScreen } from './components/Login';
 //import functions
 import { getAuth, onAuthStateChanged } from 'firebase/auth'
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { coasterStore } from './coasterStore';
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
 
   // Takes in a coaster object and adds it to the coasters array
   const addCoaster = (coaster) => {
+    coasterStore.saveCoaster(coaster);
     setCoasters([...coasters, coaster]);
   };
 
