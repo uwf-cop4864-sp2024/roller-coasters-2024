@@ -12,7 +12,7 @@ export function CoasterList(props) {
                     </tr>
                 </thead>
                 <tbody>
-                    {props.coasters.map((coaster, index) => {
+                    {props.coasters?.map((coaster, index) => {
                         return (
                             <tr key={index}>
                                 <td>{coaster.name}</td>
