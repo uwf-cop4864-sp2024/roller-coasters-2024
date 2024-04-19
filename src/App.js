@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import { Navbar } from './components/Navbar';
 import { CoasterForm } from './components/CoasterForm';
@@ -9,10 +8,11 @@ import { MySignInScreen } from './components/Login';
 import { getAuth, onAuthStateChanged } from 'firebase/auth'
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { coasterStore } from './coasterStore';
+import { firebaseApp } from './firebase.config';
 
 function App() {
 
-  const auth = getAuth();
+  const auth = getAuth(firebaseApp);
 
   const [coasters, setCoasters] = useState([]);
   const [user, loading, error] = useAuthState(auth);

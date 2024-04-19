@@ -1,14 +1,8 @@
-//import the function from the realtime database module
-import { initializeApp } from "firebase/app";
 import { getDatabase, ref,  push as firebasePush } from 'firebase/database';
-import { firebaseConfig } from './firebase.config';
-  
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-
+import { firebaseApp } from './firebase.config';
 
 // Initialize Realtime Database and get a reference to the service
-const db = getDatabase(app);
+const db = getDatabase(firebaseApp);
 
 export const coasterStore = {
     saveCoaster: (coaster) => {
