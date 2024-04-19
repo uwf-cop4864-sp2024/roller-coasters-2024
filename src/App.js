@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import { Navbar } from './components/Navbar';
 import { CoasterForm } from './components/CoasterForm';
@@ -8,16 +7,19 @@ import { MySignInScreen } from './components/Login';
 //import functions
 import { getAuth, onAuthStateChanged } from 'firebase/auth'
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { coasterStore } from './coasterStore';
+import { firebaseApp } from './firebase.config';
 
 function App() {
 
-  const auth = getAuth();
+  const auth = getAuth(firebaseApp);
 
   const [coasters, setCoasters] = useState([]);
   const [user, loading, error] = useAuthState(auth);
 
   // Takes in a coaster object and adds it to the coasters array
   const addCoaster = (coaster) => {
+    coasterStore.saveCoaster(coaster);
     setCoasters([...coasters, coaster]);
   };
 
